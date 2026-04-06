@@ -3,292 +3,197 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillProof | Prove Your Potential</title>
+    <title>SkillProof | The New Standard of Talent</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #7c3aed;
-            --secondary: #3b82f6;
-            --accent: #00f2fe;
-            --bg: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --text-main: #f8fafc;
+            --primary: #8b5cf6;
+            --secondary: #06b6d4;
+            --dark: #020617;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            background-color: var(--bg);
-            color: var(--text-main);
+            background-color: var(--dark);
+            color: #f8fafc;
             font-family: 'Plus Jakarta Sans', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* BACKGROUND DECORATION */
-        .blob {
+        /* DYNAMIC BACKGROUND */
+        .bg-glow {
             position: fixed;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, rgba(0,0,0,0) 70%);
-            border-radius: 50%;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #1e1b4b 0%, transparent 50%),
+                        radial-gradient(circle at 0% 100%, #0c4a6e 0%, transparent 30%);
             z-index: -1;
-            filter: blur(80px);
         }
 
-        /* REUSABLE LAYOUT */
         .section {
-            padding: 120px 20px;
-            max-width: 1200px;
+            padding: 100px 5%;
+            max-width: 1300px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        h1, h2 {
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            margin-bottom: 1.5rem;
-        }
-
-        p {
-            color: #94a3b8;
-            max-width: 700px;
-            font-size: 1.1rem;
         }
 
         /* HERO SECTION */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
-            background: radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, transparent 80%);
+            align-items: center;
+            text-align: center;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            background: linear-gradient(to right, #fff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.1;
-        }
-
-        .highlight {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom, #fff 30%, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        /* BUTTONS */
-        .btn {
-            padding: 16px 32px;
-            border-radius: 50px;
-            border: none;
+        .badge {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 100px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            font-size: 0.9rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-            margin-top: 30px;
-            text-decoration: none;
+            margin-bottom: 20px;
             display: inline-block;
         }
 
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(124, 58, 237, 0.5);
-            filter: brightness(1.1);
-        }
-
-        /* GRID & CARDS */
-        .grid {
+        /* BENTO GRID (Innovation) */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
             gap: 20px;
-            width: 100%;
-            margin-top: 60px;
-        }
-
-        .card {
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            text-align: left;
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--primary);
-            transform: translateY(-10px);
-        }
-
-        .card-number {
-            font-size: 0.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: block;
-            text-transform: uppercase;
-        }
-
-        /* PRODUCT EXPERIENCE */
-        .img-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
             margin-top: 50px;
         }
 
-        .img-container img {
+        .bento-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 32px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .bento-item:hover { border-color: var(--primary); transform: scale(1.02); }
+
+        .item-1 { grid-column: span 2; } /* Wide */
+        .item-2 { grid-column: span 2; } /* Wide */
+        .item-3 { grid-column: span 1; } /* Tall/Small */
+        .item-4 { grid-column: span 2; } /* Wide */
+        .item-5 { grid-column: span 1; } /* Tall/Small */
+
+        /* CONTENT STYLING */
+        h2 { font-size: 2.5rem; margin-bottom: 20px; }
+        .accent { color: var(--secondary); }
+
+        .feature-img {
             width: 100%;
-            max-width: 450px;
-            border-radius: 15px;
-            border: 1px solid rgba(255,255,255,0.1);
+            height: 150px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-top: 20px;
+            filter: grayscale(0.5);
             transition: 0.5s;
         }
 
-        .img-container img:hover {
-            transform: scale(1.05) rotate(1deg);
+        .bento-item:hover .feature-img { filter: grayscale(0); }
+
+        /* BUTTONS */
+        .cta-btn {
+            background: #fff;
+            color: #000;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        /* STATS SECTION */
-        .stats-grid {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
+        .cta-btn:hover { background: var(--primary); color: #fff; }
 
-        .stat-item h3 {
-            font-size: 3rem;
-            color: var(--accent);
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .item-1, .item-2, .item-3, .item-4, .item-5 { grid-column: span 1; }
         }
-
-        /* ANIMATIONS */
-        [data-reveal] {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        [data-reveal].visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="blob" style="top: -100px; right: -100px;"></div>
-    <div class="blob" style="bottom: 10%; left: -100px; background: rgba(59, 130, 246, 0.1);"></div>
+    <div class="bg-glow"></div>
 
     <section class="section hero">
-        <h1 data-reveal>The Gold Standard of <br><span class="highlight">Human Skills.</span></h1>
-        <p data-reveal>Resumes tell stories. SkillProof shows results. Our AI-driven simulations verify your soft skills so you can stand out in a crowded market.</p>
-        <div data-reveal>
-            <a href="#" class="btn btn-primary">Get Verified Now</a>
+        <div class="badge">V2.0 is now live</div>
+        <h1>Stop Claiming.<br>Start <span style="color: var(--primary)">Proving.</span></h1>
+        <p style="font-size: 1.2rem; color: #94a3b8; max-width: 600px;">
+            Traditional resumes are dead. SkillProof uses high-fidelity AI simulations to certify your real-world capabilities.
+        </p>
+        <div style="margin-top: 40px;">
+            <button class="cta-btn">Build Your Proof Profile</button>
         </div>
     </section>
 
     <section class="section">
-        <h2 data-reveal>The Gap is Real</h2>
-        <div class="stats-grid">
-            <div class="stat-item" data-reveal>
-                <h3>42%</h3>
-                <p>Graduates are job-ready</p>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2>The <span class="accent">Proof</span> is in the Process</h2>
+            <p>How we turn your potential into verified data.</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-item item-1">
+                <h3>AI Simulations</h3>
+                <p>Enter a virtual office. Solve a crisis. Our AI tracks your leadership and logic in real-time.</p>
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800" class="feature-img" alt="AI Simulation interface">
             </div>
-            <div class="stat-item" data-reveal>
-                <h3>87%</h3>
-                <p>Companies report skill gaps</p>
+
+            <div class="bento-item item-2">
+                <h3>Verified Credentials</h3>
+                <p>Every score is anchored on the blockchain. Instant verification for recruiters—zero fraud.</p>
+                <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=800" class="feature-img" alt="Blockchain verification">
+            </div>
+
+            <div class="bento-item item-3">
+                <h3>Soft-Skill DNA</h3>
+                <p>Measure empathy, grit, and teamwork.</p>
+            </div>
+
+            <div class="bento-item item-4">
+                <h3>Recruiter Dashboard</h3>
+                <p>Companies don't just see a name; they see a data-backed talent map of your strengths.</p>
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800" class="feature-img" alt="Data dashboard">
+            </div>
+
+            <div class="bento-item item-5">
+                <h3>Gamified</h3>
+                <p>Earn XP as you level up your career readiness.</p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <h2 data-reveal>The Roadmap to Proof</h2>
-        <div class="grid">
-            <div class="card" data-reveal>
-                <span class="card-number">Step 01</span>
-                <h3>Simulated Challenges</h3>
-                <p>Engage in real-world workplace scenarios designed by industry experts.</p>
-            </div>
-            <div class="card" data-reveal>
-                <span class="card-number">Step 02</span>
-                <h3>AI Behavioral Analysis</h3>
-                <p>Our engine analyzes communication, logic, and emotional intelligence in real-time.</p>
-            </div>
-            <div class="card" data-reveal>
-                <span class="card-number">Step 03</span>
-                <h3>Verified Credential</h3>
-                <p>Receive a blockchain-backed certificate that recruiters actually trust.</p>
-            </div>
-        </div>
+    <section class="section" style="text-align: center; background: rgba(255,255,255,0.03); border-radius: 40px;">
+        <h2>Ready to outshine the competition?</h2>
+        <p style="margin-bottom: 30px;">Join the talent revolution.</p>
+        <button class="cta-btn">Get Started for Free</button>
     </section>
 
-    <section class="section">
-        <h2 data-reveal>Experience the Future</h2>
-        <p data-reveal>A sleek, gamified interface designed for the modern professional.</p>
-        <div class="img-container" data-reveal>
-            <img src="https://via.placeholder.com/450x300/1e293b/ffffff?text=Dashboard+UI" alt="Dashboard">
-            <img src="https://via.placeholder.com/450x300/1e293b/ffffff?text=Assessment+UI" alt="Assessment">
-        </div>
-    </section>
-
-    <section class="section">
-        <h2 data-reveal>Engineered for Impact</h2>
-        <div class="grid">
-            <div class="card" data-reveal><h3>AI Skill Analysis</h3></div>
-            <div class="card" data-reveal><h3>Verified Certificates</h3></div>
-            <div class="card" data-reveal><h3>Recruiter Dashboard</h3></div>
-            <div class="card" data-reveal><h3>Student Profiles</h3></div>
-            <div class="card" data-reveal><h3>Gamified Tests</h3></div>
-            <div class="card" data-reveal><h3>Feedback Reports</h3></div>
-        </div>
-    </section>
-
-    <section class="section hero" style="min-height: 60vh;">
-        <h2 data-reveal>Ready to prove your worth?</h2>
-        <p data-reveal>Join 10,000+ students already using SkillProof to land their dream roles.</p>
-        <div data-reveal>
-            <a href="#" class="btn btn-primary">Create Your Profile</a>
-        </div>
-    </section>
-
-    <script>
-        // Simple Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('[data-reveal]').forEach((el) => {
-            observer.observe(el);
-        });
-    </script>
 </body>
 </html>
