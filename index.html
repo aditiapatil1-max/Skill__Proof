@@ -123,33 +123,45 @@
         .btn-p { background: var(--primary); color: white; box-shadow: 0 10px 20px var(--primary-glow); }
         .btn-p:hover { transform: translateY(-3px); filter: brightness(1.1); }
 
-        /* --- RECRUITER DASHBOARD UI --- */
-        .dash-ui {
-            background: #0f172a;
-            padding: 25px;
-            border-radius: 20px;
+        /* --- CONTACT SECTION --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+            width: 100%;
         }
 
-        .candidate-card {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 12px;
-            margin-bottom: 12px;
+        .contact-form {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 24px;
             border: 1px solid var(--border);
         }
 
-        .badge {
-            background: rgba(34, 211, 238, 0.15);
-            color: var(--accent);
-            padding: 2px 10px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            font-weight: 800;
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        /* --- MODAL & BACKEND MOCK --- */
+        .info-card {
+            background: var(--glass);
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: var(--success);
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        /* --- MODAL --- */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -171,14 +183,15 @@
             border: 1px solid var(--border);
         }
 
-        input {
+        input, textarea {
             width: 100%;
             padding: 15px;
-            margin: 20px 0 10px;
+            margin-bottom: 15px;
             border-radius: 10px;
             border: 1px solid var(--border);
             background: rgba(255,255,255,0.05);
             color: white;
+            font-family: inherit;
         }
 
         /* --- ANIMATIONS --- */
@@ -186,7 +199,7 @@
         [data-reveal].active { opacity: 1; transform: translateY(0); }
 
         @media (max-width: 968px) {
-            .container { grid-template-columns: 1fr; text-align: center; }
+            .container, .contact-grid { grid-template-columns: 1fr; text-align: center; }
             .visual-box { order: -1; }
         }
     </style>
@@ -208,7 +221,7 @@
         <div class="container">
             <div class="content" data-reveal>
                 <h1 class="grad-text">Your Skills,<br>Finally Verified.</h1>
-                <p>Degrees show you can learn. SkillProof shows you can perform. Our AI simulations test your leadership, communication, and grit in real-world workplace scenarios.</p>
+                <p>Degrees show you can learn. SkillProof shows you can perform. Our AI simulations test your leadership and communication in real-world workplace scenarios.</p>
                 <button class="btn btn-p" onclick="openModal()">Start Free Assessment</button>
             </div>
             <div class="visual-box" data-reveal>
@@ -217,123 +230,121 @@
         </div>
     </section>
 
-    <section style="background: rgba(255,255,255,0.01);">
-        <div class="container">
-            <div class="visual-box" data-reveal>
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="AI Tech">
-            </div>
-            <div class="content" data-reveal>
-                <h2 class="grad-text">The Proof Engine</h2>
-                <p>We don't do boring quizzes. We place you in a 15-minute "Day in the Life" simulation. Our AI analyzes 50+ data points including:</p>
-                <ul style="list-style: none; color: var(--text-muted); font-size: 1.1rem;">
-                    <li style="margin-bottom: 10px;">⚡ <strong>Crisis Logic:</strong> How you pivot during a system failure.</li>
-                    <li style="margin-bottom: 10px;">💬 <strong>Communication:</strong> Tone analysis in simulated emails.</li>
-                    <li style="margin-bottom: 10px;">🧠 <strong>Strategic Grit:</strong> Long-term focus under pressure.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
     <section id="recruiter-hero" style="background: radial-gradient(circle at right, rgba(236, 72, 153, 0.05), transparent);">
         <div class="container">
             <div class="content" data-reveal>
                 <h2 style="color: var(--recruiter)">Hire the Top 1% <br>of Human Talent.</h2>
-                <p>Stop guessing based on resumes. Access a pre-verified pool of candidates ranked by their actual performance in high-stakes behavioral simulations.</p>
-                <div style="display: flex; gap: 20px; margin-top: 20px;">
-                    <div style="text-align: center;">
-                        <h3 style="color: var(--recruiter); font-size: 2rem;">60%</h3>
-                        <p style="font-size: 0.8rem;">Less Churn</p>
-                    </div>
-                    <div style="text-align: center;">
-                        <h3 style="color: var(--accent); font-size: 2rem;">4x</h3>
-                        <p style="font-size: 0.8rem;">Faster Hiring</p>
-                    </div>
-                </div>
+                <p>Access a pre-verified pool of candidates ranked by their actual performance in high-stakes behavioral simulations. No more resume guesswork.</p>
+                <button class="btn btn-p" style="background:var(--recruiter)" onclick="openModal()">Request Demo</button>
             </div>
-            <div class="dash-ui" data-reveal>
-                <p style="font-size: 0.7rem; color: var(--recruiter); font-weight: 800; margin-bottom: 15px; letter-spacing: 1px;">LIVE TALENT FEED</p>
-                <div class="candidate-card">
-                    <span>Jordan M. • Senior Lead</span>
-                    <span class="badge">98 Score</span>
+            <div class="visual-box" data-reveal style="background:#0f172a; padding: 30px;">
+                <p style="font-size: 0.7rem; color: var(--recruiter); font-weight: 800; margin-bottom: 15px;">LIVE TALENT FEED</p>
+                <div style="background:rgba(255,255,255,0.02); padding: 15px; border-radius:10px; margin-bottom: 10px; border: 1px solid var(--border);">
+                    Jordan M. • Senior Lead <span style="float:right; color:var(--accent);">98 Score</span>
                 </div>
-                <div class="candidate-card">
-                    <span>Elena R. • Ops Manager</span>
-                    <span class="badge">94 Score</span>
-                </div>
-                <div class="candidate-card">
-                    <span>Marcus K. • UX Strategist</span>
-                    <span class="badge">91 Score</span>
+                <div style="background:rgba(255,255,255,0.02); padding: 15px; border-radius:10px; border: 1px solid var(--border);">
+                    Elena R. • Ops Manager <span style="float:right; color:var(--accent);">94 Score</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section style="text-align: center; min-height: 60vh;">
-        <div style="max-width: 700px; margin: 0 auto;" data-reveal>
-            <h2 class="grad-text">The Future of Hiring is Here.</h2>
-            <p>Join 10,000+ professionals and 500+ companies already using SkillProof.</p>
-            <button class="btn btn-p" style="margin-top: 20px; font-size: 1.2rem;" onclick="openModal()">Get Started for Free</button>
+    <section id="contact-section" style="background: rgba(255,255,255,0.01);">
+        <div class="container" style="display: block;">
+            <div style="text-align: center; margin-bottom: 60px;" data-reveal>
+                <h2 class="grad-text">Human Support for Human Skills</h2>
+                <p>Have questions? Our team is ready to help you navigate the future of hiring.</p>
+            </div>
+
+            <div class="contact-grid" data-reveal>
+                <div class="contact-form">
+                    <form id="outreachForm">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <input type="text" placeholder="First Name" required>
+                            <input type="text" placeholder="Last Name" required>
+                        </div>
+                        <input type="email" id="contactEmail" placeholder="Email Address" required>
+                        <textarea rows="5" placeholder="How can we help you?"></textarea>
+                        <button type="submit" class="btn btn-p" style="width: 100%;">Send Message</button>
+                    </form>
+                    <div id="contactStatus" style="display: none; margin-top: 20px; color: var(--success); text-align: center;"></div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="info-card">
+                        <h4 style="margin-bottom: 10px;">Reach Out</h4>
+                        <p style="font-size: 0.9rem; margin-bottom: 5px;">📧 support@skillproof.ai</p>
+                        <p style="font-size: 0.9rem;">📍 San Francisco, CA</p>
+                    </div>
+                    <div class="info-card">
+                        <h4 style="margin-bottom: 10px;">Platform Status</h4>
+                        <p style="font-size: 0.9rem;"><span class="status-dot"></span> Systems Operational</p>
+                        <p style="font-size: 0.9rem; margin-top: 10px; color: var(--text-muted);">Avg. response time: &lt; 2 hours</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
     <div id="modal" class="modal">
         <div class="modal-card">
-            <h2 id="m-title">Unlock Access</h2>
-            <p id="m-desc">Enter your email to connect with the SkillProof Engine.</p>
+            <h2>Join SkillProof</h2>
+            <p>Ready to verify your professional DNA?</p>
             <form id="waitlist">
                 <input type="email" id="email" placeholder="name@email.com" required>
-                <button type="submit" class="btn btn-p" style="width: 100%;">Initialize Assessment</button>
+                <button type="submit" class="btn btn-p" style="width: 100%;">Initialize</button>
             </form>
-            <div id="status" style="display: none; margin-top: 20px; color: var(--success); font-weight: 700;"></div>
+            <div id="status" style="display: none; margin-top: 20px; color: var(--success);"></div>
         </div>
     </div>
 
     <script>
-        // 1. ANIMATION: REVEAL ON SCROLL
+        // REVEAL ON SCROLL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) entry.target.classList.add('active');
             });
         }, { threshold: 0.1 });
-
         document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-        // 2. VIEW SWITCHER LOGIC
+        // VIEW SWITCHER
         function switchView(type) {
-            const stuBtn = document.getElementById('btn-stu');
-            const recBtn = document.getElementById('btn-rec');
-            
             if(type === 'recruiter') {
-                stuBtn.classList.remove('active');
-                recBtn.classList.add('active');
                 document.getElementById('recruiter-hero').scrollIntoView();
+                document.getElementById('btn-rec').classList.add('active');
+                document.getElementById('btn-stu').classList.remove('active');
             } else {
-                recBtn.classList.remove('active');
-                stuBtn.classList.add('active');
                 document.getElementById('student-hero').scrollIntoView();
+                document.getElementById('btn-stu').classList.add('active');
+                document.getElementById('btn-rec').classList.remove('active');
             }
         }
 
-        // 3. MODAL LOGIC
+        // MODAL
         function openModal() { document.getElementById('modal').style.display = 'flex'; }
         window.onclick = (e) => { if(e.target.id === 'modal') document.getElementById('modal').style.display = 'none'; }
 
-        // 4. MOCK BACKEND LOGIC
+        // MOCK BACKEND: OUTREACH FORM
+        document.getElementById('outreachForm').onsubmit = (e) => {
+            e.preventDefault();
+            const status = document.getElementById('contactStatus');
+            status.style.display = 'block';
+            status.innerText = "Transmitting message...";
+            setTimeout(() => {
+                status.innerText = "✓ Message Received. A specialist will follow up shortly.";
+                document.getElementById('outreachForm').reset();
+            }, 1500);
+        };
+
+        // MOCK BACKEND: WAITLIST
         document.getElementById('waitlist').onsubmit = (e) => {
             e.preventDefault();
-            const email = document.getElementById('email').value;
             const status = document.getElementById('status');
-            const form = document.getElementById('waitlist');
-
-            form.style.opacity = '0.3';
-            form.style.pointerEvents = 'none';
             status.style.display = 'block';
-            status.innerText = "Connecting to SkillProof Core...";
-
+            status.innerText = "Connecting...";
             setTimeout(() => {
-                status.innerHTML = `✓ Success! Check <strong>${email}</strong> for your invitation link.`;
-                console.log("Backend Success: User Saved", { email, date: new Date() });
-            }, 2000);
+                status.innerText = "✓ Check your inbox for the access key.";
+            }, 1500);
         };
     </script>
 </body>
